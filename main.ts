@@ -1,3 +1,20 @@
+// Compares users response to values in array. If they match, player gets a point. If they don't match, player loses a point.
+function evaluateGuess (text: string) {
+    match = 0
+    for (let guess = 0; guess <= spriteNames.length - 1; guess++) {
+        let value = ""
+        if (text == value) {
+            info.changeScoreBy(1)
+            music.baDing.play()
+        } else {
+            info.changeScoreBy(-1)
+            music.buzzer.play()
+        }
+    }
+}
+// Runs the program. Sets background image and sprite images and sprite names
+let match = 0
+let spriteNames: string[] = []
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -280,16 +297,19 @@ img`
     ................................
     `
 ]
-let spriteNames = [
+spriteNames = [
 "strawberry",
 "cake",
 "apple",
 "cherries",
 "donut"
 ]
+// Shows sprite images on screen
 for (let index = 0; index <= 4; index++) {
     picnicFood.setImage(spriteImages[index])
-    pause(1000)
+    pause(500)
 }
 picnicFood.destroy()
-let answer = game.askForString("What was in Yogi's basket?")
+info.setScore(0)
+let guess = game.askForString("What was in Yogi's basket?")
+evaluateGuess("abc")
