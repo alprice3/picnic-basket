@@ -156,7 +156,7 @@ picnicFood.setImage(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `)
-let spriteList = [
+let spriteImages = [
 img`
     . . . . . . . 6 . . . . . . . . 
     . . . . . . 8 6 6 . . . 6 8 . . 
@@ -287,3 +287,9 @@ let spriteNames = [
 "cherries",
 "donut"
 ]
+for (let index = 0; index <= 4; index++) {
+    picnicFood.setImage(spriteImages[index])
+    pause(1000)
+}
+picnicFood.destroy()
+let answer = game.askForString("What was in Yogi's basket?")
